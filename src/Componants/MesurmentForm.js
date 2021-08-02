@@ -8,6 +8,7 @@ const MesurmentForm = () => {
     Shirt_Chest: "",
     Shirt_Shoulder: "",
     Shirt_Cuff: "",
+    Shirt_Sleeve: "",
     Shirt_Collar: "",
     Shirt_Gap: "",
     Shirt_Manela: "",
@@ -32,9 +33,98 @@ const MesurmentForm = () => {
 
     setUser({ ...user, [name]: value });
   };
+
+  const PostData = async (e) => {
+    e.preventDefault();
+
+    const {
+      name,
+      phoneNumber,
+      Shirt_Height,
+      Shirt_Chest,
+      Shirt_Shoulder,
+      Shirt_Cuff,
+      Shirt_Sleeve,
+      Shirt_Collar,
+      Shirt_Gap,
+      Shirt_Manela,
+      Shirt_HalfSleeve,
+      Shirt_FullSleeve,
+      Pant_Height,
+      Pant_Waist,
+      Pant_Back,
+      Pant_Knee,
+      Pant_Mandi,
+      Pant_Plet,
+      Pant_WithoutPlet,
+      Pant_Side,
+      Pant_Box,
+    } = user;
+
+    const res = await fetch(
+      "https://measurementform-8e412-default-rtdb.firebaseio.com/mesurmentForm.json",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application.json",
+        },
+        body: JSON.stringify({
+          name,
+          phoneNumber,
+          Shirt_Height,
+          Shirt_Chest,
+          Shirt_Shoulder,
+          Shirt_Cuff,
+          Shirt_Sleeve,
+          Shirt_Collar,
+          Shirt_Gap,
+          Shirt_Manela,
+          Shirt_HalfSleeve,
+          Shirt_FullSleeve,
+          Pant_Height,
+          Pant_Waist,
+          Pant_Back,
+          Pant_Knee,
+          Pant_Mandi,
+          Pant_Plet,
+          Pant_WithoutPlet,
+          Pant_Side,
+          Pant_Box,
+        }),
+      }
+    );
+
+    if (res) {
+      setUser({
+        name: "",
+        phoneNumber: "",
+        Shirt_Height: "",
+        Shirt_Chest: "",
+        Shirt_Shoulder: "",
+        Shirt_Cuff: "",
+        Shirt_Sleeve: "",
+        Shirt_Collar: "",
+        Shirt_Gap: "",
+        Shirt_Manela: "",
+        Shirt_HalfSleeve: "",
+        Shirt_FullSleeve: "",
+        Pant_Height: "",
+        Pant_Waist: "",
+        Pant_Back: "",
+        Pant_Knee: "",
+        Pant_Mandi: "",
+        Pant_Plet: "",
+        Pant_WithoutPlet: "",
+        Pant_Side: "",
+        Pant_Box: "",
+      });
+
+      alert("Save Successfully");
+    }
+  };
   return (
     <>
-      <form method="post" data-netlify="true">
+      <form method="post" data-netlify="true" method="POST">
         <div className="form">
           <div className="customer-details">
             <h4>Customer Details</h4>
@@ -48,7 +138,7 @@ const MesurmentForm = () => {
                     className="validate"
                     name="name"
                     value={user.name}
-                    onClick={getUserData}
+                    onChange={getUserData}
                   />
                   <label for="icon_prefix">Name of Customer</label>
                 </div>
@@ -60,7 +150,7 @@ const MesurmentForm = () => {
                     className="validate"
                     name="phoneNumber"
                     value={user.phoneNumber}
-                    onClick={getUserData}
+                    onChange={getUserData}
                   />
                   <label for="icon_telephone">Phone Number</label>
                 </div>
@@ -77,7 +167,7 @@ const MesurmentForm = () => {
                   type="number"
                   name="Shirt_Height"
                   value={user.Shirt_Height}
-                  onClick={getUserData}
+                  onChange={getUserData}
                 />
                 <label for="shirt_height" className="test">
                   उंची :
@@ -89,7 +179,7 @@ const MesurmentForm = () => {
                   type="number"
                   name="Shirt_Chest"
                   value={user.Shirt_Chest}
-                  onClick={getUserData}
+                  onChange={getUserData}
                 />
                 <label for="shirt_chest">छाती :</label>
               </div>
@@ -102,7 +192,7 @@ const MesurmentForm = () => {
                   type="number"
                   name="Shirt_Shoulder"
                   value={user.Shirt_Shoulder}
-                  onClick={getUserData}
+                  onChange={getUserData}
                 />
                 <label for="shirt_shoulder">शोल्ड :</label>
               </div>
@@ -112,7 +202,7 @@ const MesurmentForm = () => {
                   type="number"
                   name="Shirt_Cuff"
                   value={user.Shirt_Cuff}
-                  onClick={getUserData}
+                  onChange={getUserData}
                 />
                 <label for="shirt_cuff">भाई/कप :</label>
               </div>
@@ -123,9 +213,9 @@ const MesurmentForm = () => {
                 <input
                   id="shirt_sleeve"
                   type="number"
-                  name="Shirt_Cuff"
-                  value={user.Shirt_Cuff}
-                  onClick={getUserData}
+                  name="Shirt_Sleeve"
+                  value={user.Shirt_Sleeve}
+                  onChange={getUserData}
                 />
                 <label for="shirt_sleeve">भाई/दंडघेर :</label>
               </div>
@@ -135,7 +225,7 @@ const MesurmentForm = () => {
                   type="number"
                   name="Shirt_Collar"
                   value={user.Shirt_Collar}
-                  onClick={getUserData}
+                  onChange={getUserData}
                 />
                 <label for="shirt_collar">कॉलर :</label>
               </div>
@@ -149,7 +239,7 @@ const MesurmentForm = () => {
                   type="radio"
                   name="Shirt_Gap"
                   value={user.Shirt_Gap}
-                  onClick={getUserData}
+                  onChange={getUserData}
                 />
                 <span>मॅनेला</span>
               </label>
@@ -159,7 +249,7 @@ const MesurmentForm = () => {
                   type="radio"
                   name="Shirt_Manela"
                   value={user.Shirt_Manela}
-                  onClick={getUserData}
+                  onChange={getUserData}
                 />
                 <span>आळ</span>
               </label>
@@ -173,7 +263,7 @@ const MesurmentForm = () => {
                   type="radio"
                   name="Shirt_HalfSleeve"
                   value={user.Shirt_HalfSleeve}
-                  onClick={getUserData}
+                  onChange={getUserData}
                 />
                 <span>हाफ</span>
               </label>
@@ -183,7 +273,7 @@ const MesurmentForm = () => {
                   type="radio"
                   name="Shirt_FullSleeve"
                   value={user.Shirt_FullSleeve}
-                  onClick={getUserData}
+                  onChange={getUserData}
                 />
                 <span>फुल</span>
               </label>
@@ -199,7 +289,7 @@ const MesurmentForm = () => {
                   type="number"
                   name="Pant_Height"
                   value={user.Pant_Height}
-                  onClick={getUserData}
+                  onChange={getUserData}
                 />
                 <label for="pant_height">उंची : </label>
               </div>
@@ -209,7 +299,7 @@ const MesurmentForm = () => {
                   type="number"
                   name="Pant_Waist"
                   value={user.Pant_Waist}
-                  onClick={getUserData}
+                  onChange={getUserData}
                 />
                 <label for="pant_height">कंबर :</label>
               </div>
@@ -222,7 +312,7 @@ const MesurmentForm = () => {
                   type="number"
                   name="Pant_Back"
                   value={user.Pant_Back}
-                  onClick={getUserData}
+                  onChange={getUserData}
                 />
                 <label for="pant_height">सीट : </label>
               </div>
@@ -232,7 +322,7 @@ const MesurmentForm = () => {
                   type="number"
                   name="Pant_Knee"
                   value={user.Pant_Knee}
-                  onClick={getUserData}
+                  onChange={getUserData}
                 />
                 <label for="pant_height">बॉटम/गुडघा : </label>
               </div>
@@ -244,7 +334,7 @@ const MesurmentForm = () => {
                 type="number"
                 name="Pant_Mandi"
                 value={user.Pant_Mandi}
-                onClick={getUserData}
+                onChange={getUserData}
               />
               <label for="pant_height">मांडी : </label>
             </div>
@@ -257,7 +347,7 @@ const MesurmentForm = () => {
                   type="radio"
                   name="Pant_Plet"
                   value={user.Pant_Plet}
-                  onClick={getUserData}
+                  onChange={getUserData}
                 />
                 <span>प्लेट पॅन्ट</span>
               </label>
@@ -267,7 +357,7 @@ const MesurmentForm = () => {
                   type="radio"
                   name="Pant_WithoutPlet"
                   value={user.Pant_WithoutPlet}
-                  onClick={getUserData}
+                  onChange={getUserData}
                 />
                 <span>बिगर प्लेट</span>
               </label>
@@ -281,7 +371,7 @@ const MesurmentForm = () => {
                   type="radio"
                   name="Pant_Side"
                   value={user.Pant_Side}
-                  onClick={getUserData}
+                  onChange={getUserData}
                 />
                 <span>साईड पॅन्ट</span>
               </label>
@@ -291,13 +381,16 @@ const MesurmentForm = () => {
                   type="radio"
                   name="Pant_Box"
                   value={user.Pant_Box}
-                  onClick={getUserData}
+                  onChange={getUserData}
                 />
                 <span>बिक्रॉस पॅन्ट</span>
               </label>
             </div>
           </div>
         </div>
+        <button className="save_btn" onClick={PostData}>
+          Save
+        </button>
       </form>
     </>
   );
