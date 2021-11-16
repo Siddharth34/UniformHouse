@@ -42,6 +42,12 @@ header {
   font-size: 2em;
 }
 
+.form_div {
+  background: url(./assets/bg_masked_compressed.jpg) no-repeat center center
+    fixed;
+  background-size: cover;
+}
+
 .form h4 {
   font-size: 1.8em;
   text-align: center;
@@ -152,16 +158,212 @@ h6 {
 
 /* Modal CSS */
 
-.modal_div {
-  height: 50vh !important;
-  /* position: fixed; */
-  /* top: 50%; */
-  /* left: 50%; */
-  width: 150vw;
-  z-index: 1000;
-  background: rgb(236, 98, 98);
-  transform: translate(-50%, -50%);
+.img_o {
+  display: block;
+  height: 90%;
+  width: 150%;
+  align-items: center;
+}
+.modal .modal-content {
+  padding: 0px;
 }
 
-.img-modal {
+/* New Img Galary CSS star here */
+
+.img_f {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.img_grid {
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+  padding: 1rem;
+  background-color: #fff;
+}
+
+/* Contact Page CSS */
+
+.section-header {
+  text-align: center;
+  padding: 40px 0;
+  color: gold;
+  text-transform: uppercase;
+  letter-spacing: 6px;
+}
+
+.contact-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 20px;
+  position: relative;
+  max-width: 840px;
+  color: #fff;
+}
+/* Left contact page */
+
+.form-horizontal {
+  max-width: 400px;
+  font-weight: 400;
+  color: #fff;
+}
+
+.send-button {
+  margin-top: 25px;
+  height: 34px;
+  width: 400px;
+}
+
+.form-control {
+  max-width: 400px;
+  color: #fff !important;
+  letter-spacing: 1px;
+}
+
+.text_area {
+  color: #000 !important;
+  background-color: #fff;
+}
+
+textarea {
+  width: 400px;
+  height: 170px;
+}
+
+::-webkit-input-placeholder {
+  /* WebKit, Blink, Edge */
+  color: #202020;
+}
+:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #202020;
+  opacity: 1;
+}
+::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #202020;
+  opacity: 1;
+}
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #202020;
+}
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: #202020;
+}
+
+::placeholder {
+  /* Most modern browsers support this now. */
+  color: #202020;
+}
+/* Begin Right Contact Page */
+
+.contact-text {
+  font: 300 18px "Lato", sans-serif;
+  letter-spacing: 1.9px;
+  margin-left: 62px;
+  padding: 0.5rem;
+  white-space: nowrap;
+}
+.icons {
+  margin: 0.8rem;
+}
+
+.split {
+  display: flex;
+  margin-left: 7rem;
+}
+
+.socialIcons > * + * {
+  margin-left: 2rem;
+}
+
+.insta-ic {
+  font-size: 2.2rem;
+}
+
+.fb-ic {
+  font-size: 2.6rem;
+}
+.email-ic {
+  font-size: 2.7rem;
+}
+.gmailIcon:hover,
+.instaIcon:hover,
+.fbIcons:hover {
+  cursor: pointer;
+  transform: translateY(-0.2rem);
+  transition: transform 150ms;
+}
+
+.copyright {
+  font: 200 14px "Oswald", sans-serif;
+  color: #fff;
+  letter-spacing: 1px;
+  text-align: center;
+  margin-left: 62px;
+  margin-top: 2rem;
+}
+
+/* Begin Media Queries*/
+@media screen and (max-width: 850px) {
+  .contact-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  .direct-contact-container,
+  .form-horizontal {
+    margin: 0 auto;
+  }
+
+  .direct-contact-container {
+    margin-top: 60px;
+    max-width: 300px;
+    margin-left: 25%;
+  }
+}
+
+@media screen and (max-width: 569px) {
+  .direct-contact-container,
+  .form-wrapper {
+    float: none;
+    margin: 0 auto;
+  }
+  .form-control,
+  textarea {
+    margin: 0 auto;
+  }
+
+  .name,
+  .email,
+  textarea {
+    width: 280px;
+  }
+
+  .direct-contact-container {
+    margin-top: 60px;
+    max-width: 280px;
+    margin-left: -2.5 rem;
+  }
+  .social-media-list {
+    left: 0;
+  }
+}
+
+@media screen and (max-width: 410px) {
+  .send-button {
+    width: 99%;
+  }
+}
+
+@media (max-width: 768px) {
+  .direct-contact-container {
+    margin-top: 60px;
+    max-width: 280px;
+    margin-left: -2.5 rem;
+  }
 }
